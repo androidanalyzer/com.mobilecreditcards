@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:amazon="http://schemas.amazon.com/apk/res/android" xmlns:android="http://schemas.android.com/apk/res/android" package="com.mobilecreditcards" platformBuildVersionCode="23" platformBuildVersionName="6.0-2704002">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <permission android:name="com.mobilecreditcards.permission.UA_DATA" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.mobilecreditcards.permission.UA_DATA"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <permission android:name="com.mobilecreditcards.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.mobilecreditcards.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="com.amazon.device.messaging.permission.RECEIVE"/>
+    <permission android:name="com.mobilecreditcards.permission.RECEIVE_ADM_MESSAGE" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.mobilecreditcards.permission.RECEIVE_ADM_MESSAGE"/>
+    <application android:allowBackup="true" android:icon="@mipmap/nw_app" android:label="@string/app_name" android:name="com.mobilecreditcards.MainApplication" android:theme="@style/AppTheme">
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:label="@string/app_name" android:launchMode="singleTask" android:name="com.mobilecreditcards.MainActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <data android:host="open" android:scheme="nerdwallet-app"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_mdCcHKAlRk2GLr5KRY3kmagaDubU4aK9"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <receiver android:exported="true" android:name="com.appsflyer.MultipleInstallBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="io.branch.referral.InstallListener">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <activity android:launchMode="singleTop" android:name="com.instabug.library.InstabugFeedbackActivity" android:theme="@style/InstabugSdkTheme" android:windowSoftInputMode="adjustResize"/>
+        <service android:name="com.instabug.library.network.worker.uploader.InstabugSessionUploaderService"/>
+        <service android:name="com.instabug.library.network.worker.uploader.InstabugBugsUploaderService"/>
+        <service android:name="com.instabug.library.network.worker.uploader.InstabugCrashesUploaderService"/>
+        <service android:name="com.instabug.library.network.worker.uploader.InstabugMessageUploaderService"/>
+        <service android:name="com.instabug.library.network.worker.fetcher.InstabugFeaturesFetcherService"/>
+        <service android:name="com.instabug.library.internal.video.VideoProcessingService"/>
+        <receiver android:name="com.instabug.library.network.InstabugNetworkReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:name="com.facebook.FacebookActivity" android:theme="@style/com_facebook_activity_theme"/>
+        <activity android:name="com.facebook.CustomTabMainActivity"/>
+        <provider android:authorities="com.mobilecreditcards.FacebookInitProvider" android:exported="false" android:name="com.facebook.internal.FacebookInitProvider"/>
+        <activity android:excludeFromRecents="true" android:exported="false" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:exported="true" android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.google.android.gms.ads.AdActivity" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity" android:theme="@style/Theme.IAPTheme"/>
+        <amazon:enable-feature android:name="com.amazon.device.messaging" android:required="false"/>
+        <activity android:name="com.urbanairship.util.HelperActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name="com.urbanairship.CoreActivity"/>
+        <activity android:name="com.urbanairship.google.PlayServicesErrorActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name="com.urbanairship.messagecenter.MessageActivity"/>
+        <activity android:label="@string/ua_message_center_title" android:name="com.urbanairship.messagecenter.MessageCenterActivity"/>
+        <activity android:exported="false" android:name="com.urbanairship.actions.LandingPageActivity" android:theme="@style/LandingPageStyle">
+            <meta-data android:name="com.urbanairship.action.LANDING_PAGE_VIEW" android:resource="@layout/ua_activity_landing_page"/>
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+            <intent-filter>
+                <action android:name="com.urbanairship.actions.SHOW_LANDING_PAGE_INTENT_ACTION"/>
+                <data android:scheme="http"/>
+                <data android:scheme="https"/>
+                <data android:scheme="message"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.urbanairship.AirshipService"/>
+        <service android:name="com.urbanairship.actions.ActionService"/>
+        <service android:label="Segments Service" android:name="com.urbanairship.location.LocationService"/>
+        <service android:exported="false" android:name="com.urbanairship.push.UAInstanceIDListenerService">
+            <intent-filter android:priority="-999">
+                <action android:name="com.google.android.gms.iid.InstanceID"/>
+            </intent-filter>
+        </service>
+        <receiver android:exported="false" android:name="com.urbanairship.CoreReceiver">
+            <intent-filter android:priority="-999">
+                <action android:name="com.urbanairship.push.OPENED"/>
+                <category android:name="com.mobilecreditcards"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.urbanairship.push.GcmPushReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter android:priority="-999">
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+                <category android:name="com.mobilecreditcards"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.urbanairship.push.AdmPushReceiver" android:permission="com.amazon.device.messaging.permission.SEND">
+            <intent-filter>
+                <action android:name="com.amazon.device.messaging.intent.REGISTRATION"/>
+                <action android:name="com.amazon.device.messaging.intent.RECEIVE"/>
+                <category android:name="com.mobilecreditcards"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.mobilecreditcards.urbanairship.provider" android:exported="true" android:name="com.urbanairship.UrbanAirshipProvider" android:permission="com.mobilecreditcards.permission.UA_DATA"/>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name="com.apptentive.android.sdk.ApptentiveViewActivity" android:theme="@style/ApptentiveTheme.Base.Versioned"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <receiver android:enabled="true" android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver" android:permission="android.permission.INSTALL_PACKAGES">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+                <category android:name="com.mobilecreditcards"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver"/>
+        <service android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <provider android:authorities="com.mobilecreditcards.firebaseinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:name="com.buddybuild.sdk.feedback.FeedbackActivity" android:screenOrientation="portrait" android:theme="@style/bb_sdk_theme"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:name="com.buddybuild.sdk.buildinfo.BuildInfoActivity" android:screenOrientation="portrait" android:theme="@style/bb_sdk_theme"/>
+        <activity android:name="com.buddybuild.sdk.demo.DemoActivity" android:theme="@style/bb_sdk_theme"/>
+    </application>
+</manifest>
